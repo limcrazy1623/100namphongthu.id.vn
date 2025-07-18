@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coming Soon</title>
+  <style>
+    body {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      padding-top: 20%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Coming Soon</h1>
+</body>
+</html>
+<h2>Trang web chính thức sẽ ra mắt sau:</h2>
+<div id="countdown" style="font-size: 2rem; color: #fff;"></div>
+
+<script>
+  const targetDate = new Date("2025-08-03T00:00:00").getTime();
+
+  const countdown = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      days + " ngày " + hours + " giờ " + minutes + " phút " + seconds + " giây ";
+
+    if (distance < 0) {
+      clearInterval(countdown);
+      document.getElementById("countdown").innerHTML = "Chào mừng bạn đến với trang chính thức!";
+    }
+  }, 1000);
+</script>
