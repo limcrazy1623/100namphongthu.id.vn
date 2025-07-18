@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>Coming Soon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon - HTTL Phong Thử</title>
   <style>
     body {
       background-color: #222;
       color: white;
       text-align: center;
-      font-family: sans-serif;
-      padding-top: 20%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-top: 15%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-bottom: 1.5rem;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      color: #00ffcc;
     }
   </style>
 </head>
 <body>
   <h1>Coming Soon</h1>
+  <h2>Trang web kỷ yếu 100 năm HTTL Phong Thử chính thức sẽ ra mắt sau:</h2>
+  <div id="countdown"></div>
+
+  <script>
+    const targetDate = new Date("2025-08-03T00:00:00").getTime();
+
+    const countdown = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "Chào mừng bạn đến với trang chính thức!";
+      } else {
+        document.getElementById("countdown").innerHTML =
+          days + " ngày " + hours + " giờ " + minutes + " phút " + seconds + " giây ";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
-<h2>Trang web kỷ yếu 100 năm HTTL Phong Thử chính thức sẽ ra mắt sau:</h2>
-<div id="countdown" style="font-size: 2rem; color: #fff;"></div>
-
-<script>
-  const targetDate = new Date("2025-08-03T00:00:00").getTime();
-
-  const countdown = setInterval(function () {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-      days + " ngày " + hours + " giờ " + minutes + " phút " + seconds + " giây ";
-
-    if (distance < 0) {
-      clearInterval(countdown);
-      document.getElementById("countdown").innerHTML = "Chào mừng bạn đến với trang chính thức!";
-    }
-  }, 1000);
-</script>
